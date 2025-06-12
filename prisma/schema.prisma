@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model contacts {
+  id      String  @id @db.VarChar(255)
+  name    String  @db.VarChar(255)
+  number  String  @db.VarChar(255)
+  img_url String? @db.VarChar(255)
+  user_id String  @db.VarChar(255)
+  user    user    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "contacts_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model user {
+  id       String     @id @db.VarChar(255)
+  username String     @db.VarChar(255)
+  password String     @db.VarChar(255)
+  contacts contacts[]
+}
