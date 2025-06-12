@@ -2,12 +2,11 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import { factory } from '../factory'
 import authApp from '../auth'
-import authorsApp from '../authors'
+import contactApp from '../contact'
 
 const api = factory.createApp()
   .route('/auth', authApp)
-  .route('/authors', authorsApp)
-  .route('/books', booksApp)
+  .route('/contacts', contactApp)
 
 export const runtime = 'edge'
 export const GET = handle(api)
