@@ -11,13 +11,3 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export default prisma
-
-// if (!globalForPrisma.prisma) {
-//     globalForPrisma.prisma = new PrismaClient({
-//         log: ['query', 'info', 'warn', 'error']
-//     })
-//     }
-// // Export the Prisma Client instance
-
-// const prisma = new PrismaClient()
-// export default prisma

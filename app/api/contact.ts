@@ -18,6 +18,7 @@ contactApp.get("/:id", async (c) => {
 });
 
 contactApp.post("/", async (c) => {
+  
   const { name, phoneNumber } = await c.req.json();
   const payload = c.get("jwtPayload");
   const newContact = await c.get("prisma").contacts.create({
