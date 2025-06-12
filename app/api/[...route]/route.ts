@@ -3,11 +3,15 @@ import { handle } from "hono/vercel";
 import { factory } from "../factory";
 import authApp from "../auth";
 import contactApp from "../contact";
+import { logger } from "hono/logger";
 
 const api = factory
   .createApp()
   .route("/auth", authApp)
-  .route("/contacts", contactApp);
+  .route("/contact", contactApp);
+
+// Apply logger middleware to the API routes
+api.use("*", logger());
 
 // Create a base app and mount api at /api
 const baseApp = new Hono();
