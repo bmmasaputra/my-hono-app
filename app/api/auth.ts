@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { zValidator } from '@hono/zod-validator'
 import { sign } from 'hono/jwt'
 import { nanoid } from 'nanoid'
+import { success } from 'zod/v4'
 
 const authApp = new Hono()
 
@@ -40,7 +41,7 @@ authApp.post(
     const now = Math.floor(Date.now() / 1000)
     const payload = { id: String(user.id), iat: now }
     const token = await sign(payload, process.env.JWT_SECRET!)
-    return c.json({ message: 'Logged in' })
+    return c.json({ success : true, token }, 200)
   }
 )
 

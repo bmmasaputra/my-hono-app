@@ -13,7 +13,6 @@ const api = factory
 const baseApp = new Hono();
 baseApp.route("/api", api);
 
-export const runtime = "edge";
 export const GET = handle(baseApp);
 export const POST = handle(baseApp);
 export const PUT = handle(baseApp);
