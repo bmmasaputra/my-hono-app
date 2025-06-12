@@ -21,7 +21,7 @@ export const factory = createFactory({
     // 2. Apply JWT middleware to protect "/authors" & "/books" routes
     app.use(
       '/contact/*',
-      (c, next) => jwt({ secret: c.env.JWT_SECRET, cookie: 'token' })(c, next)
+      (c, next) => jwt({ secret: process.env.JWT_SECRET! })(c, next)
     )
   }
 })
